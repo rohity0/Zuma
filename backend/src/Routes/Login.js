@@ -15,7 +15,7 @@ login.post("/", async (req, res)=>{
 
                     }
 
-                    res.status(200).send("Wrong Credential")
+                    res.status(200).send({error:"Wrong Credential"})
 
             }catch(e){
                 res.send(e.message)

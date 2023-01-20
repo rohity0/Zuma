@@ -1,10 +1,13 @@
 import { GetTodo, LoginSuccess, Logout } from "./actionType"
 
 
-export const reducer = ({type, action})=>{
+export const reducer = ( state, {type, payload})=>{
+   
          switch(type){
-            
+
                 case LoginSuccess:return{
+                             ...state,
+                             token : payload.token
                     
                 };
 

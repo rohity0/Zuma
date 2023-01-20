@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../Context/AppContext"
-import Styles from "../Css/signup.module.css"
+
 
 export const Signup  = ()=>{
      const { handleSignup } = useContext(AppContext);

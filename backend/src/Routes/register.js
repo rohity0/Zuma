@@ -15,7 +15,7 @@ register.post("/", async (req, res)=>{
                 if(validUser.length===0){
                       let newUser = new Users(req.body);
                         await newUser.save();
-                        res.status(200).send("User")
+                        res.status(200).send({ keyS : "User Signuped Sccessfully"})
                 }else{
                     res.status(200).send("User already  have an account");
                 }

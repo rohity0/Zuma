@@ -9,7 +9,7 @@ register.get("/", (req, res)=>[
 
 
 register.post("/", async (req, res)=>{
-          let {name, email, password} = req.body;
+          let {email} = req.body;
             try{
                 let  validUser = await Users.find({email: email});
                 if(validUser.length===0){

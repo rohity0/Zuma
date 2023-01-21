@@ -3,6 +3,7 @@ import { useContext } from "react"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { AppContext } from "../Context/AppContext"
+import { Navbar } from "./Navbar"
 
 
 export const Signup  = ()=>{
@@ -33,6 +34,8 @@ export const Signup  = ()=>{
      }
   
     return(
+        <>
+        <Navbar />
         <Box>
             <Box mt="100px" textAlign={"center"}>
                   <Text as="h1" fontSize={"20px"}>
@@ -61,5 +64,6 @@ export const Signup  = ()=>{
                      </form>
                  </Box>
         </Box>
+        </>
     )
 }

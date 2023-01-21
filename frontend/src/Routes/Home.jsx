@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text, Textarea } from "@chakra-ui/react"
+import { Badge, Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text, Textarea } from "@chakra-ui/react"
 import { useState } from "react"
 import { useContext, useEffect } from "react"
 import { Navbar } from "../Components/Navbar"
@@ -14,6 +14,10 @@ export const Home = ()=>{
         description : "",
        })
       
+      //  console.log(state.data, "home")
+     state.data?.filter((item)=> item.todoStatus =="pending");
+       
+
 const handleChnage=  (e)=>{
      const{name, value } = e.target;
       setTodoPost({
@@ -73,20 +77,56 @@ const handleSubmit=(e)=>{
                  <Box 
                  border="1px solid rgba(0,0,0,0.1)"
                  borderRadius="5px"
-                 height="100px"
+                 height="90vh"
                  overflow="auto">
                         <Box backgroundColor="green.100" position="sticky" top="0" zIndex="1">
                             <Text textAlign="center" fontWeight="bold">
                             TODO
                             </Text>
-                        </Box>
+                        </Box> 
+                        {
+                           state.data?.filter((item)=> item.todoStatus =="pending").map((el)=>{
+                               return  <Box
+                                 width="90%"
+                                 boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"
+                                 margin="0.5rem auto 1rem"
+                                 padding="15px"
+                                >
+                                   <Text 
+                                     mb="5px"
+                                     fontSize={"19px"} fontWeight={"600"}
+                                   >
+                                     Title :   <Text as="span">{el.title}</Text>
+                                    </Text> 
+                                     <Badge>
+                                      {el.todoStatus}
+                                     </Badge>
+                                      <Text mb="7px" fontSize={"19px"} fontWeight={"600"}>Description </Text>
+                                     <Text>
+                                         {
+                                          el.description
+                                         }
+                                      </Text> 
 
+                                      <Flex mt="15px">
+                                         <Button colorScheme={"green"}>
+                                                     Update
+                                         </Button>
+                                         <Spacer />
+                                         <Button colorScheme={"red"}>
+                                                       Delete
+                                         </Button>
+                                      </Flex>
+                                </Box>
+                           })
+                          
+                        }
 
                  </Box>
                  <Box
                  border="1px solid rgba(0,0,0,0.1)"
                  borderRadius="5px"
-                 height="100px"
+                 height="90vh"
                  overflow="auto"
                  >
                         <Box
@@ -103,7 +143,7 @@ const handleSubmit=(e)=>{
                  <Box
                  border="1px solid rgba(0,0,0,0.1)"
                  borderRadius="5px"
-                 height="100px"
+                 height="90vh"
                  overflow="auto" 
                  >
                     
@@ -113,7 +153,7 @@ const handleSubmit=(e)=>{
                             </Text>
                         </Box>
 
-                        
+
                  </Box>
 
                

@@ -17,7 +17,7 @@ Todo.get("/", async (req, res)=>{
 
 Todo.post("/", async(req, res)=>{
     let [id, email,name] = req.headers.token.split(":");
-    console.log(id)
+    // console.log(id)
     let  post = req.body;
           post = {
             ...post,

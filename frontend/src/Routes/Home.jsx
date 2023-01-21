@@ -2,6 +2,7 @@ import { Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text, Texta
 import { useState } from "react"
 import { useContext, useEffect } from "react"
 import { Navbar } from "../Components/Navbar"
+import { GetTodo } from "../Context/actionType"
 import { AppContext } from "../Context/AppContext"
 
 
@@ -24,13 +25,18 @@ const handleChnage=  (e)=>{
 const handleSubmit=(e)=>{
           e.preventDefault();
           handlePost(todoPost)
-         
+          getTodo().then((res)=>{
+            dispatch({type: GetTodo, payload: {data:res.data}});
+            })
+        }
 
 
-}
      useEffect(()=>{
           if(state.token){
-            getTodo();
+            getTodo().then((res)=>{
+                dispatch({type: GetTodo, payload: {data:res.data}});
+               
+            })
           }
      },[])
 
@@ -74,6 +80,8 @@ const handleSubmit=(e)=>{
                             TODO
                             </Text>
                         </Box>
+
+
                  </Box>
                  <Box
                  border="1px solid rgba(0,0,0,0.1)"
@@ -104,6 +112,8 @@ const handleSubmit=(e)=>{
                               DONE
                             </Text>
                         </Box>
+
+                        
                  </Box>
 
                

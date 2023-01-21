@@ -14,7 +14,7 @@ const initalState ={
 
 export const AppContextProvider = ({children})=>{
        const [state, dispatch] = useReducer(reducer,initalState);
-    //   console.log(state);
+      console.log(state);
 
        const handleSignup= async (data)=>{
           

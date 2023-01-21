@@ -1,4 +1,4 @@
-import { Box, Button, Flex, FormControl, Input, Spacer, Text, Textarea } from "@chakra-ui/react"
+import { Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text, Textarea } from "@chakra-ui/react"
 import { Navbar } from "../Components/Navbar"
 
 
@@ -32,6 +32,53 @@ export const Home = ()=>{
                </form>
              
         </Box>
+   
+          {/* todo post */}
+          <Grid  w="90%" m={"auto"} mt="25px"  templateColumns='repeat(3, 1fr)' gap="1.5rem"> 
+                 <Box 
+                 border="1px solid rgba(0,0,0,0.1)"
+                 borderRadius="5px"
+                 height="100px"
+                 overflow="auto">
+                        <Box backgroundColor="green.100" position="sticky" top="0" zIndex="1">
+                            <Text textAlign="center" fontWeight="bold">
+                            TODO
+                            </Text>
+                        </Box>
+                 </Box>
+                 <Box
+                 border="1px solid rgba(0,0,0,0.1)"
+                 borderRadius="5px"
+                 height="100px"
+                 overflow="auto"
+                 >
+                        <Box
+                            backgroundColor="yellow.100"
+                            position="sticky"
+                            top="0"
+                            zIndex="1"
+                        >
+                            <Text textAlign="center" fontWeight="bold">
+                            IN-PROGRESS
+                            </Text>
+                        </Box>  
+                 </Box>
+                 <Box
+                 border="1px solid rgba(0,0,0,0.1)"
+                 borderRadius="5px"
+                 height="100px"
+                 overflow="auto" 
+                 >
+                    
+                        <Box backgroundColor="blue.100" position="sticky" top="0" zIndex="1">
+                            <Text textAlign="center" fontWeight="bold">
+                            DONE
+                            </Text>
+                        </Box>
+                 </Box>
+
+               
+          </Grid>
 
         </>
     )

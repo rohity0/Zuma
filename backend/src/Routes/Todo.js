@@ -48,7 +48,14 @@ Todo.patch("/:id", async(req, res)=>{
 })
 
 Todo.delete("/:id", async(req, res)=>{
-   
+   let id = req.params.id;
+      try{ 
+           await Todos.findByIdAndDelete(id);
+           res.status(200).send("done")
+
+      }catch(e){
+         res.status(400).send(e.message)
+      }
 })
 
 module.exports = Todo    

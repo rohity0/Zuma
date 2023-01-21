@@ -22,7 +22,7 @@ import { AppContext } from '../Context/AppContext'
 
 export function UpdateTodoPost({title, description, todoStatus,id}) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const {dispatch,handlePatchPost} =  useContext(AppContext);
+    const {dispatch,handlePatchPost,} =  useContext(AppContext);
     const  [editTodo , setEditTodo] = useState({
           title: title,
           description : description,

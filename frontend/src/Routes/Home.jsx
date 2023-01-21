@@ -9,7 +9,7 @@ import { AppContext } from "../Context/AppContext"
 
 
 export const Home = ()=>{
-   const {state, getTodo,dispatch , handlePost} = useContext(AppContext);
+   const {state, getTodo,dispatch ,deleteTodo, handlePost} = useContext(AppContext);
      const [todoPost, setTodoPost] = useState({
         title : "",
         description : "",
@@ -35,6 +35,11 @@ const handleSubmit=(e)=>{
             })
         }
 
+const handleDelete= (id)=>{
+  deleteTodo(id).then((res)=>{
+    dispatch({type:GetTodo, payload: {data: res.data}})
+  })
+}
 
      useEffect(()=>{
           if(state.token){
@@ -94,7 +99,7 @@ const handleSubmit=(e)=>{
                                  padding="15px"
                                  key={el._id}
                                 >
-                                  <TodoCard key={el._id} {...el}/>
+                                  <TodoCard key={el._id} handleDelete={handleDelete} {...el}/>
                                    
                                 </Box> 
                            })

@@ -1,7 +1,7 @@
 import { Badge, Button, Flex, Spacer, Text } from "@chakra-ui/react"
 import { UpdateTodoPost } from "./EditTodoPost"
 
-export const TodoCard = ({title, description, todoStatus , _id})=>{
+export const TodoCard = ({title, description, handleDelete, todoStatus , _id})=>{
      return (
          <>
                                    <Text
@@ -30,7 +30,7 @@ export const TodoCard = ({title, description, todoStatus , _id})=>{
                                          todoStatus ={todoStatus}
                                         />
                                          <Spacer />
-                                         <Button colorScheme={"red"}>
+                                         <Button onClick={()=> handleDelete(_id)} colorScheme={"red"}>
                                                        Delete
                                          </Button>
                                       </Flex>

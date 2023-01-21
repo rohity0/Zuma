@@ -1,4 +1,3 @@
-
 import { createContext, useReducer, useState } from "react";
 import axios from 'axios';
 import { reducer } from "./reducer";
@@ -82,8 +81,23 @@ export const AppContextProvider = ({children})=>{
              console.log(e.message)
           }
     }
+
+    const deleteTodo = async(id)=>{
+         try{
+            await axios({
+                url :`http://localhost:8000/todo/${id}`,
+                method : "delete",
+                headers: {token : state.token}
+             });
+              return  getTodo();
+
+         }catch(e){
+            console.log(e.message)
+         }
+    }
+
      return(
-        <AppContext.Provider value={{state, handleSignup, hanldeLogin, dispatch ,handlePost, getTodo , handlePatchPost }}>
+        <AppContext.Provider value={{state, handleSignup, hanldeLogin,deleteTodo, dispatch ,handlePost, getTodo , handlePatchPost }}>
             {children}
         </AppContext.Provider>
      )

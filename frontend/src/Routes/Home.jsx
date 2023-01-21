@@ -49,7 +49,7 @@ const handleSubmit=(e)=>{
         <>
            <Navbar />
            {/* create task here */}
-        <Box p="20px" m="auto" mt="25px" w="75%" border={"1px solid"} borderRadius="10px" >
+        <Box p="20px" m="auto" mt="25px" w="75%"  border="1px solid rgba(0,0,0,0.1)" borderRadius="10px" >
 
               <form onSubmit={handleSubmit}>
                 <Flex  mb="15px">
@@ -118,6 +118,22 @@ const handleSubmit=(e)=>{
                                IN-PROGRESS
                             </Text>
                         </Box>  
+                        {
+                           state.data?.filter((item)=> item.todoStatus =="inprogress").map((el)=>{
+                               return  <Box
+                                 width="90%"
+                                 boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"
+                                 margin="0.5rem auto 1rem"
+                                 padding="15px"
+                                 key={el._id}
+                                >
+                                  <TodoCard key={el._id} {...el}/>
+                                   
+                                </Box> 
+                           })
+                          
+                        }
+                        
                  </Box>
                  <Box
                  border="1px solid rgba(0,0,0,0.1)"
@@ -131,7 +147,21 @@ const handleSubmit=(e)=>{
                               DONE
                             </Text>
                         </Box>
-
+                        {
+                           state.data?.filter((item)=> item.todoStatus =="done").map((el)=>{
+                               return  <Box
+                                 width="90%"
+                                 boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"
+                                 margin="0.5rem auto 1rem"
+                                 padding="15px"
+                                 key={el._id}
+                                >
+                                  <TodoCard key={el._id} {...el}/>
+                                   
+                                </Box> 
+                           })
+                          
+                        }
 
                  </Box>
 

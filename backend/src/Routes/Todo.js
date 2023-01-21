@@ -34,7 +34,17 @@ Todo.post("/", async(req, res)=>{
 
 
 Todo.patch("/:id", async(req, res)=>{
+     let [id, email,name] = req.headers.token.split(":");
+     let  param = req.params.id;
+     try{ 
+      let data=await Todos.findByIdAndUpdate(param,{...req.body},{new:true});
+                res.status(200).send("done");
 
+     }catch(e){
+        console.log(e.message)
+         res.status(400).send(e.message)
+     }
+      
 })
 
 Todo.delete("/:id", async(req, res)=>{

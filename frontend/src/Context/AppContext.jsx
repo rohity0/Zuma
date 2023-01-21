@@ -67,8 +67,23 @@ export const AppContextProvider = ({children})=>{
                console.log(e.message)
            }
     }
+
+    const handlePatchPost = async(id,data)=>{
+          try{
+               await axios({
+                url :`http://localhost:8000/todo/${id}`,
+                method : "patch",
+                data: data,
+                headers: {token : state.token}
+             });
+              return  getTodo();
+
+          }catch(e){
+             console.log(e.message)
+          }
+    }
      return(
-        <AppContext.Provider value={{state, handleSignup, hanldeLogin, dispatch ,handlePost, getTodo }}>
+        <AppContext.Provider value={{state, handleSignup, hanldeLogin, dispatch ,handlePost, getTodo , handlePatchPost }}>
             {children}
         </AppContext.Provider>
      )

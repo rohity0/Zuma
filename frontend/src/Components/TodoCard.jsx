@@ -24,6 +24,7 @@ export const TodoCard = ({title, description, todoStatus , _id})=>{
                                       <Flex mt="15px">
                                         <UpdateTodoPost
                                          key={_id} 
+                                         id={_id}
                                          title ={title}
                                          description ={description}
                                          todoStatus ={todoStatus}

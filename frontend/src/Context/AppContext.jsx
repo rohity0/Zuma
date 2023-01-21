@@ -14,7 +14,7 @@ const initalState ={
 
 export const AppContextProvider = ({children})=>{
        const [state, dispatch] = useReducer(reducer,initalState);
-      console.log(state);
+    //   console.log(state);
 
        const handleSignup= async (data)=>{
           
@@ -43,12 +43,19 @@ export const AppContextProvider = ({children})=>{
        };
    
     const getTodo = async()=>{
-          let  res =  await axios.get("http://localhost:8000/todo")
-               console.log(res)      
+        console.log("toddo")
+    //   try{
+    //     let  res =  await axios.get("http://localhost:8000/todo", {
+    //                             headers: {token : state.token}
+    //                     })
+    //                         console.log(res)      
+    //   }catch(e){
+    //     console.log(e.message)
+    //   }
     }
 
      return(
-        <AppContext.Provider value={{handleSignup, hanldeLogin, dispatch , getTodo }}>
+        <AppContext.Provider value={{state, handleSignup, hanldeLogin, dispatch , getTodo }}>
             {children}
         </AppContext.Provider>
      )

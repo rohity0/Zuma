@@ -1,9 +1,21 @@
 import { Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text, Textarea } from "@chakra-ui/react"
+import { useContext, useEffect } from "react"
 import { Navbar } from "../Components/Navbar"
+import { AppContext } from "../Context/AppContext"
 
 
 
 export const Home = ()=>{
+   const {state, getTodo,dispatch } = useContext(AppContext);
+    console.log(state)
+     
+
+  
+     useEffect(()=>{
+          if(state.token){
+            getTodo();
+          }
+     },[])
 
     return(
         <>
@@ -59,7 +71,7 @@ export const Home = ()=>{
                             zIndex="1"
                         >
                             <Text textAlign="center" fontWeight="bold">
-                            IN-PROGRESS
+                               IN-PROGRESS
                             </Text>
                         </Box>  
                  </Box>
@@ -72,7 +84,7 @@ export const Home = ()=>{
                     
                         <Box backgroundColor="blue.100" position="sticky" top="0" zIndex="1">
                             <Text textAlign="center" fontWeight="bold">
-                            DONE
+                              DONE
                             </Text>
                         </Box>
                  </Box>

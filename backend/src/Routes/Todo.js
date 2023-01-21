@@ -3,8 +3,14 @@ const Todos = require("../Schema/Post");
 
 const Todo = express.Router();
 
-Todo.get("/", (req, res)=>{
-
+Todo.get("/", async (req, res)=>{
+      let [id, email,name] = req.headers.token.split(":");
+           try{
+               let  data = await Todos.find({createdBy: id});
+                      res.send(data);
+           }catch(e){
+                       res.send(e.message);
+           }
 });
 
 
@@ -22,7 +28,7 @@ Todo.post("/", async(req, res)=>{
                           await newPost.save();
                           res.send(newPost)
              }catch(e){
-                   res.send(e.message)
+                    res.send(e.message)
              }
 });
 

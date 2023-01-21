@@ -5,18 +5,19 @@ export const reducer = ( state, {type, payload})=>{
    
          switch(type){
 
-                case LoginSuccess:return{
-                             ...state,
-                             token : payload.token
-                    
-                };
+                case LoginSuccess:
+                        localStorage.setItem("tokenKey",JSON.stringify(payload.token))
+                     return{
+                               ...state,
+                             token : payload.token   };
 
                 case  Logout:return {
                     
                 };
 
                 case GetTodo:return {
-                    
+                      ...state, 
+                      data: payload.data
                 }
                 default: return state
          }

@@ -15,6 +15,7 @@ const initalState ={
 export const AppContextProvider = ({children})=>{
        const [state, dispatch] = useReducer(reducer,initalState);
       console.log(state);
+
        const handleSignup= async (data)=>{
           
                try{
@@ -26,7 +27,7 @@ export const AppContextProvider = ({children})=>{
                }catch(e){
                      console.log(e.message)
                }
-       }
+       };
   
        const hanldeLogin =  async (data)=>{
             try{
@@ -39,10 +40,15 @@ export const AppContextProvider = ({children})=>{
             catch(e){
                 console.log(e.message)
             }
-       }
+       };
    
+    const getTodo = async()=>{
+          let  res =  await axios.get("http://localhost:8000/todo")
+               console.log(res)      
+    }
+
      return(
-        <AppContext.Provider value={{handleSignup, hanldeLogin, dispatch }}>
+        <AppContext.Provider value={{handleSignup, hanldeLogin, dispatch , getTodo }}>
             {children}
         </AppContext.Provider>
      )

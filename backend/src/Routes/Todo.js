@@ -33,4 +33,12 @@ Todo.post("/", async(req, res)=>{
 });
 
 
+Todo.patch("/:id", async(req, res)=>{
+
+})
+
+Todo.delete("/:id", async(req, res)=>{
+   
+})
+
 module.exports = Todo    

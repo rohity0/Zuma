@@ -11,8 +11,11 @@ export const reducer = ( state, {type, payload})=>{
                                ...state,
                              token : payload.token   };
 
-                case  Logout:return {
-                    
+                case  Logout:
+                  localStorage.removeItem("tokenKey")
+                  return {
+                ...state,
+                token : ""
                 };
 
                 case GetTodo:return {

@@ -33,6 +33,11 @@ const handleSubmit=(e)=>{
           getTodo().then((res)=>{
             dispatch({type: GetTodo, payload: {data:res.data}});
             })
+            setTodoPost({
+            title : "",
+            description : "",
+            })
+
         }
 
 const handleDelete= (id)=>{

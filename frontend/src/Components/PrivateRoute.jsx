@@ -8,7 +8,7 @@ export const  PrivateRoute = ({children})=>{
     // console.log(state, "private");
     if(!state.token){
         // console.log("private")
-     return <Navigate to="/" />
+     return <Navigate to="/login" />
     }
      
 

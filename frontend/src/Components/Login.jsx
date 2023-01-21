@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 import { LoginSuccess } from "../Context/actionType";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "./Navbar";
 
 export const Login = ()=>{
     const {hanldeLogin,dispatch} = useContext(AppContext);
@@ -36,6 +37,7 @@ const handleSubmit = (e)=>{
 
     return(
         <>
+        <Navbar />
            <Box>
             
             <Box mt="100px" textAlign={"center"}>

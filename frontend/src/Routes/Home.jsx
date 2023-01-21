@@ -2,6 +2,7 @@ import { Badge, Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text
 import { useState } from "react"
 import { useContext, useEffect } from "react"
 import { Navbar } from "../Components/Navbar"
+import { TodoCard } from "../Components/TodoCard"
 import { GetTodo } from "../Context/actionType"
 import { AppContext } from "../Context/AppContext"
 
@@ -92,7 +93,8 @@ const handleSubmit=(e)=>{
                                  margin="0.5rem auto 1rem"
                                  padding="15px"
                                 >
-                                   <Text 
+                                  <TodoCard key={el._id} {...el}/>
+                                   {/* <Text 
                                      mb="5px"
                                      fontSize={"19px"} fontWeight={"600"}
                                    >
@@ -116,8 +118,8 @@ const handleSubmit=(e)=>{
                                          <Button colorScheme={"red"}>
                                                        Delete
                                          </Button>
-                                      </Flex>
-                                </Box>
+                                      </Flex>*/}
+                                </Box> 
                            })
                           
                         }

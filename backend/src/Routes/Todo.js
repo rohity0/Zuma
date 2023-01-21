@@ -6,7 +6,7 @@ const Todo = express.Router();
 Todo.get("/", async (req, res)=>{
       let [id, email,name] = req.headers.token.split(":");
            try{
-               let  data = await Todos.find({createdBy: id});
+               let  data = await Todos.find({createdBy: id}).sort({createdAt: -1});
                       res.send(data);
            }catch(e){
                        res.send(e.message);

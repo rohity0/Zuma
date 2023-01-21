@@ -1,4 +1,5 @@
 import { Box, Button, Flex, FormControl, Grid, Input, Spacer, Stack, Text, Textarea } from "@chakra-ui/react"
+import { useState } from "react"
 import { useContext, useEffect } from "react"
 import { Navbar } from "../Components/Navbar"
 import { AppContext } from "../Context/AppContext"
@@ -6,11 +7,27 @@ import { AppContext } from "../Context/AppContext"
 
 
 export const Home = ()=>{
-   const {state, getTodo,dispatch } = useContext(AppContext);
-    console.log(state)
-     
-
+   const {state, getTodo,dispatch , handlePost} = useContext(AppContext);
+     const [todoPost, setTodoPost] = useState({
+        title : "",
+        description : "",
+       })
+      
+const handleChnage=  (e)=>{
+     const{name, value } = e.target;
+      setTodoPost({
+        ...todoPost,
+        [name] : value
+      })
+}
   
+const handleSubmit=(e)=>{
+          e.preventDefault();
+          handlePost(todoPost)
+         
+
+
+}
      useEffect(()=>{
           if(state.token){
             getTodo();
@@ -23,7 +40,7 @@ export const Home = ()=>{
            {/* create task here */}
         <Box p="20px" m="auto" mt="25px" w="75%" border={"1px solid"} borderRadius="10px" >
 
-              <form>
+              <form onSubmit={handleSubmit}>
                 <Flex  mb="15px">
                   <Text as="h2"  textAlign={"center"} fontSize="25px" fontWeight={500}> Create Task Here</Text>
                   <Spacer />
@@ -34,10 +51,10 @@ export const Home = ()=>{
                 
                 <Box>
                    <FormControl mb="7px">
-                      <Input placeholder="Title . . . " />
+                      <Input isRequired onChange={handleChnage} value={todoPost.title} name="title" placeholder="Title . . . " />
                    </FormControl>
                   <FormControl>
-                     <Textarea h="100px" resize={"none"} placeholder="Type Here . . ." />
+                     <Textarea isRequired onChange={handleChnage}value={todoPost.description} name="description" h="100px" resize={"none"} placeholder="Type Here . . ." />
                   </FormControl>
                 </Box>
             

@@ -43,19 +43,32 @@ export const AppContextProvider = ({children})=>{
        };
    
     const getTodo = async()=>{
-        console.log("toddo")
-    //   try{
-    //     let  res =  await axios.get("http://localhost:8000/todo", {
-    //                             headers: {token : state.token}
-    //                     })
-    //                         console.log(res)      
-    //   }catch(e){
-    //     console.log(e.message)
-    //   }
+      
+      try{
+        return await axios.get("http://localhost:8000/todo", {
+                                headers: {token : state.token}
+                        })
+  
+      }catch(e){
+        console.log(e.message)
+      }
     }
 
+    const handlePost = async(data)=>{
+           try{
+               let   res = await axios({
+                  url :"http://localhost:8000/todo",
+                  method : "Post",
+                  data: data,
+                  headers: {token : state.token}
+               });
+               console.log(res.data)
+           }catch(e){
+               console.log(e.message)
+           }
+    }
      return(
-        <AppContext.Provider value={{state, handleSignup, hanldeLogin, dispatch , getTodo }}>
+        <AppContext.Provider value={{state, handleSignup, hanldeLogin, dispatch ,handlePost, getTodo }}>
             {children}
         </AppContext.Provider>
      )

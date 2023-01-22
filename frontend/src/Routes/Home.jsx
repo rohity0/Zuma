@@ -15,8 +15,7 @@ export const Home = ()=>{
         description : "",
        })
       
-      //  console.log(state.data, "home")
-     state.data?.filter((item)=> item.todoStatus =="pending");
+  
        
 
 const handleChnage=  (e)=>{
@@ -24,7 +23,8 @@ const handleChnage=  (e)=>{
       setTodoPost({
         ...todoPost,
         [name] : value
-      })
+      });
+     
 }
   
 const handleSubmit=(e)=>{
@@ -34,10 +34,10 @@ const handleSubmit=(e)=>{
             dispatch({type: GetTodo, payload: {data:res.data}});
             })
             setTodoPost({
-            title : "",
-            description : "",
+              ...todoPost,
+              title : "",
+              description : "",
             })
-
         }
 
 const handleDelete= (id)=>{
@@ -112,6 +112,7 @@ const handleDelete= (id)=>{
                         }
 
                  </Box>
+                 {/*inprogress  */}
                  <Box
                  border="1px solid rgba(0,0,0,0.1)"
                  borderRadius="5px"
@@ -137,7 +138,7 @@ const handleDelete= (id)=>{
                                  padding="15px"
                                  key={el._id}
                                 >
-                                  <TodoCard key={el._id} {...el}/>
+                                  <TodoCard key={el._id} handleDelete={handleDelete}  {...el}/>
                                    
                                 </Box> 
                            })
@@ -145,6 +146,7 @@ const handleDelete= (id)=>{
                         }
                         
                  </Box>
+                 {/* done */}
                  <Box
                  border="1px solid rgba(0,0,0,0.1)"
                  borderRadius="5px"
@@ -166,7 +168,7 @@ const handleDelete= (id)=>{
                                  padding="15px"
                                  key={el._id}
                                 >
-                                  <TodoCard key={el._id} {...el}/>
+                                  <TodoCard key={el._id} handleDelete={handleDelete}  {...el}/>
                                    
                                 </Box> 
                            })

@@ -10,6 +10,7 @@ const initalState ={
     data: [],
 }
 
+ const url=  process.env.REACT_APP_BACKEND_URL;
 
 export const AppContextProvider = ({children})=>{
        const [state, dispatch] = useReducer(reducer,initalState);
@@ -19,7 +20,7 @@ export const AppContextProvider = ({children})=>{
           
                try{
                      return await  axios({
-                        url: "https://zuma-production.up.railway.app/register",
+                        url: `${url}/register`,
                         method: "POST",
                         data: data
                      });          
@@ -31,7 +32,7 @@ export const AppContextProvider = ({children})=>{
        const hanldeLogin =  async (data)=>{
             try{
                 return  axios({
-                    url: "https://zuma-production.up.railway.app/login",
+                    url: `${url}/login`,
                     method : "post",
                     data : data
                   })
@@ -44,7 +45,7 @@ export const AppContextProvider = ({children})=>{
     const getTodo = async()=>{
       
       try{
-        return await axios.get("https://zuma-production.up.railway.app/todo", {
+        return await axios.get(`${url}/todo`, {
                                 headers: {token : state.token}
                         })
   
@@ -56,7 +57,7 @@ export const AppContextProvider = ({children})=>{
     const handlePost = async(data)=>{
            try{
                let   res = await axios({
-                  url :"https://zuma-production.up.railway.app/todo",
+                  url :`${url}/todo`,
                   method : "Post",
                   data: data,
                   headers: {token : state.token}
@@ -70,7 +71,7 @@ export const AppContextProvider = ({children})=>{
     const handlePatchPost = async(id,data)=>{
           try{
                await axios({
-                url :`https://zuma-production.up.railway.app/todo/${id}`,
+                url :`${url}/todo/${id}`,
                 method : "patch",
                 data: data,
                 headers: {token : state.token}
@@ -85,7 +86,7 @@ export const AppContextProvider = ({children})=>{
     const deleteTodo = async(id)=>{
          try{
             await axios({
-                url :`https://zuma-production.up.railway.app/todo/${id}`,
+                url :`${url}/todo/${id}`,
                 method : "delete",
                 headers: {token : state.token}
              });
